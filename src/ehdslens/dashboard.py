@@ -271,10 +271,12 @@ def create_dashboard():
         with col1:
             st.markdown(f"### {selected_axis.value.replace('_', ' ').title()}")
             st.metric("Total Studies", analysis['total_studies'])
+            st.metric("Peer-reviewed", analysis.get('peer_reviewed', 0))
+            st.metric("High Quality", analysis.get('high_quality_count', 0))
 
-            st.markdown("#### Key Themes")
-            for theme in analysis['themes']:
-                st.markdown(f"- {theme}")
+            st.markdown("#### Study Types")
+            for stype, count in analysis.get('type_distribution', {}).items():
+                st.markdown(f"- {stype.replace('_', ' ').title()}: {count}")
 
         with col2:
             st.markdown("#### Quality Distribution")
@@ -308,12 +310,12 @@ def create_dashboard():
         }
 
         for f in findings:
-            conf = f['confidence']
+            conf = f['confidence'].lower()  # Normalize to lowercase
             emoji = confidence_colors.get(conf, '⚪')
 
             with st.expander(f"{emoji} **{conf.upper()}** - {f['finding'][:60]}...", expanded=conf=='high'):
                 st.markdown(f"**Finding:** {f['finding']}")
-                st.markdown(f"**Contributing Studies:** n={f['studies']}")
+                st.markdown(f"**Contributing Studies:** {f['studies']}")
                 st.markdown(f"**Confidence Level:** {conf.upper()}")
 
         # Hypotheses
