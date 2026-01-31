@@ -1,0 +1,96 @@
+site_name: EHDSLens Documentation
+site_description: A Python toolkit for analyzing the European Health Data Space systematic literature review
+site_author: Fabio Liberti
+site_url: https://fabioliberti.github.io/EHDSLens/
+
+repo_name: FabioLiberti/EHDSLens
+repo_url: https://github.com/FabioLiberti/EHDSLens
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+  - User Guide:
+    - Overview: guide/overview.md
+    - Data Exploration: guide/data-exploration.md
+    - Analysis: guide/analysis.md
+    - Visualization: guide/visualization.md
+    - Export & Reports: guide/export.md
+  - API Reference:
+    - Core: api/core.md
+    - Data: api/data.md
+    - Analysis: api/analysis.md
+    - Visualization: api/visualization.md
+    - Export: api/export.md
+    - CLI: api/cli.md
+  - Methodology:
+    - PRISMA 2020: methodology/prisma.md
+    - GRADE-CERQual: methodology/grade-cerqual.md
+    - Thematic Analysis: methodology/thematic.md
+  - About:
+    - Citation: about/citation.md
+    - Contributing: about/contributing.md
+    - Changelog: about/changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/FabioLiberti/EHDSLens
+  generator: false
+
+copyright: Copyright &copy; 2025 Fabio Liberti
