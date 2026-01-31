@@ -1,0 +1,114 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ehdslens"
+version = "1.0.0"
+description = "European Health Data Space Literature Analysis Toolkit"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Fabio Liberti", email = "fabio.liberti@unimercatorum.it"}
+]
+maintainers = [
+    {name = "Fabio Liberti", email = "fabio.liberti@unimercatorum.it"}
+]
+keywords = [
+    "EHDS",
+    "European Health Data Space",
+    "systematic review",
+    "health data",
+    "GDPR",
+    "privacy",
+    "federated learning",
+    "health informatics",
+    "digital health",
+    "data governance"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed"
+]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "isort>=5.0",
+    "mypy>=1.0",
+    "flake8>=6.0"
+]
+viz = [
+    "matplotlib>=3.7",
+    "plotly>=5.0",
+    "pandas>=2.0"
+]
+export = [
+    "pandas>=2.0",
+    "openpyxl>=3.1"
+]
+all = [
+    "ehdslens[dev,viz,export]"
+]
+
+[project.urls]
+Homepage = "https://github.com/FabioLiberti/EHDSLens"
+Documentation = "https://github.com/FabioLiberti/EHDSLens#readme"
+Repository = "https://github.com/FabioLiberti/EHDSLens.git"
+Issues = "https://github.com/FabioLiberti/EHDSLens/issues"
+Changelog = "https://github.com/FabioLiberti/EHDSLens/blob/main/CHANGELOG.md"
+
+[project.scripts]
+ehdslens = "ehdslens.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ['py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=ehdslens --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["src/ehdslens"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError"
+]
