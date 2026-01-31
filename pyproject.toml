@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ehdslens"
-version = "1.1.0"
+version = "1.2.0"
 description = "European Health Data Space Literature Analysis Toolkit"
 readme = "README.md"
 license = {text = "MIT"}
@@ -42,7 +42,14 @@ classifiers = [
     "Typing :: Typed"
 ]
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "streamlit>=1.30",
+    "fastapi>=0.109",
+    "uvicorn>=0.27",
+    "pydantic>=2.0",
+    "plotly>=5.0",
+    "pandas>=2.0"
+]
 
 [project.optional-dependencies]
 dev = [
@@ -62,18 +69,8 @@ export = [
     "pandas>=2.0",
     "openpyxl>=3.1"
 ]
-dashboard = [
-    "streamlit>=1.30",
-    "plotly>=5.0",
-    "pandas>=2.0"
-]
-api = [
-    "fastapi>=0.109",
-    "uvicorn>=0.27",
-    "pydantic>=2.0"
-]
 all = [
-    "ehdslens[dev,viz,export,dashboard,api]"
+    "ehdslens[dev,viz,export]"
 ]
 
 [project.urls]

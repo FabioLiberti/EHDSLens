@@ -49,6 +49,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 12 testable hypotheses for future research
 - 6 identified research gaps
 
+## [1.2.0] - 2026-01-31
+
+### Changed
+
+- **Dashboard and API now included by default**: No need for optional installs
+  - `pip install ehdslens` now includes Streamlit, FastAPI, Plotly, Pandas
+  - Removed `[dashboard]` and `[api]` optional dependencies
+
+### Added
+
+- **Docker support**:
+  - `Dockerfile` for containerized deployment
+  - `docker-compose.yml` for running Dashboard + API together
+  - `.dockerignore` for efficient builds
+
+- **Streamlit Cloud support**:
+  - `streamlit_app.py` entry point
+  - `.streamlit/config.toml` theme configuration
+  - `requirements.txt` for cloud deployment
+
+- **Documentation links**:
+  - Live demo badge in README
+  - Documentation site link
+  - Docker instructions
+
 ## [1.1.0] - 2026-01-31
 
 ### Added
@@ -102,5 +127,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[1.2.0]: https://github.com/FabioLiberti/EHDSLens/releases/tag/v1.2.0
 [1.1.0]: https://github.com/FabioLiberti/EHDSLens/releases/tag/v1.1.0
 [1.0.0]: https://github.com/FabioLiberti/EHDSLens/releases/tag/v1.0.0

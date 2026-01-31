@@ -2,9 +2,13 @@
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://img.shields.io/badge/DOI-10.xxxx%2Fxxxxx-blue)](https://doi.org/)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://fabioliberti.github.io/EHDSLens/)
+[![Demo](https://img.shields.io/badge/demo-Streamlit%20Cloud-FF4B4B)](https://ehdslens.streamlit.app)
+[![Docker](https://img.shields.io/badge/docker-available-2496ED)](https://github.com/FabioLiberti/EHDSLens)
 
 **European Health Data Space Literature Analysis Toolkit**
+
+🌐 **[Live Demo](https://ehdslens.streamlit.app)** | 📖 **[Documentation](https://fabioliberti.github.io/EHDSLens/)** | 🐳 **[Docker](#docker)**
 
 A comprehensive Python toolkit for systematic literature review analysis of the European Health Data Space (EHDS) regulatory framework, based on the methodology described in:
 
@@ -131,20 +135,22 @@ cd EHDSLens
 pip install -e .
 ```
 
-### With Optional Dependencies
+### What's Included
+
+The base installation includes everything you need:
+- ✅ Interactive Streamlit Dashboard
+- ✅ FastAPI REST API
+- ✅ Plotly visualizations
+- ✅ Pandas data manipulation
+
+### Optional Dependencies
 
 ```bash
-# For visualization support
+# For matplotlib support
 pip install ehdslens[viz]
 
 # For Excel export
 pip install ehdslens[export]
-
-# For interactive dashboard (Streamlit)
-pip install ehdslens[dashboard]
-
-# For REST API (FastAPI)
-pip install ehdslens[api]
 
 # For development
 pip install ehdslens[dev]
@@ -152,6 +158,28 @@ pip install ehdslens[dev]
 # All optional dependencies
 pip install ehdslens[all]
 ```
+
+### Docker
+
+Run with Docker (no installation needed):
+
+```bash
+# Clone repository
+git clone https://github.com/FabioLiberti/EHDSLens.git
+cd EHDSLens
+
+# Run with Docker Compose (Dashboard + API)
+docker-compose up
+
+# Or just the dashboard
+docker build -t ehdslens .
+docker run -p 8501:8501 ehdslens
+```
+
+Access:
+- Dashboard: http://localhost:8501
+- API: http://localhost:8000
+- API Docs: http://localhost:8000/docs
 
 ---
 
@@ -471,7 +499,7 @@ And the software:
   title={EHDSLens: European Health Data Space Literature Analysis Toolkit},
   year={2026},
   url={https://github.com/FabioLiberti/EHDSLens},
-  version={1.1.0}
+  version={1.2.0}
 }
 ```
 
