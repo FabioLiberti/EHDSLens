@@ -148,3 +148,8 @@ data/raw/
 data/processed/
 outputs/
 reports/
+
+# My Exclusions
+Documentation/_Documentation/
+_BK&OLDS/
+

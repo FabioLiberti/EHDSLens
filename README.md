@@ -8,7 +8,7 @@
 
 A comprehensive Python toolkit for systematic literature review analysis of the European Health Data Space (EHDS) regulatory framework, based on the methodology described in:
 
-> Liberti, F. (2026). *The European Health Data Space: A Systematic Literature Review - Governance, Privacy-Enhancing Technologies, and Implementation Challenges in the Post-Adoption Era (2022–2026)*. Journal of Medical Internet Research.
+> Liberti, F. (2026). *The European Health Data Space: A Systematic Literature Review - Governance, Privacy-Enhancing Technologies, and Implementation Challenges in the Post-Adoption Era (2022–2026)*.
 
 ---
 
@@ -513,7 +513,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Fabio Liberti, PhD**
 Department of Computer Science
 Universitas Mercatorum, Rome, Italy
-📧 fabio.liberti@unimercatorum.it
+📧 fabio.liberti@studenti.unimercatorum.it
 
 ---
 
