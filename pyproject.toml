@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ehdslens"
-version = "1.0.0"
+version = "1.1.0"
 description = "European Health Data Space Literature Analysis Toolkit"
 readme = "README.md"
 license = {text = "MIT"}
@@ -62,8 +62,18 @@ export = [
     "pandas>=2.0",
     "openpyxl>=3.1"
 ]
+dashboard = [
+    "streamlit>=1.30",
+    "plotly>=5.0",
+    "pandas>=2.0"
+]
+api = [
+    "fastapi>=0.109",
+    "uvicorn>=0.27",
+    "pydantic>=2.0"
+]
 all = [
-    "ehdslens[dev,viz,export]"
+    "ehdslens[dev,viz,export,dashboard,api]"
 ]
 
 [project.urls]
@@ -75,6 +85,8 @@ Changelog = "https://github.com/FabioLiberti/EHDSLens/blob/main/CHANGELOG.md"
 
 [project.scripts]
 ehdslens = "ehdslens.cli:main"
+ehdslens-dashboard = "ehdslens.dashboard:main"
+ehdslens-api = "ehdslens.api:run_api"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

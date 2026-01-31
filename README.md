@@ -68,6 +68,26 @@ The European Health Data Space (EHDS), established by Regulation (EU) 2025/327, 
 - **Data**: CSV, JSON, and Excel exports
 - **Visualizations**: Chart data for Matplotlib, Plotly, and LaTeX
 
+### Interactive Dashboard
+
+```bash
+# Launch Streamlit dashboard
+ehdslens dashboard
+
+# Custom port
+ehdslens dashboard --port 8501
+```
+
+### REST API
+
+```bash
+# Start API server
+ehdslens api
+
+# With custom host/port
+ehdslens api --host 0.0.0.0 --port 8000 --reload
+```
+
 ### Command Line Interface
 
 ```bash
@@ -85,6 +105,12 @@ ehdslens report markdown -o report.md
 
 # Export bibliography
 ehdslens export bibtex -o references.bib
+
+# Launch dashboard
+ehdslens dashboard
+
+# Start API server
+ehdslens api
 ```
 
 ---
@@ -113,6 +139,12 @@ pip install ehdslens[viz]
 
 # For Excel export
 pip install ehdslens[export]
+
+# For interactive dashboard (Streamlit)
+pip install ehdslens[dashboard]
+
+# For REST API (FastAPI)
+pip install ehdslens[api]
 
 # For development
 pip install ehdslens[dev]
@@ -439,7 +471,7 @@ And the software:
   title={EHDSLens: European Health Data Space Literature Analysis Toolkit},
   year={2026},
   url={https://github.com/FabioLiberti/EHDSLens},
-  version={1.0.0}
+  version={1.1.0}
 }
 ```
 

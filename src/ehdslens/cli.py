@@ -10,6 +10,8 @@ Usage:
     ehdslens export FORMAT   Export data (csv/json/bibtex)
     ehdslens grade           Show GRADE-CERQual summary
     ehdslens hypotheses      List testable hypotheses
+    ehdslens dashboard       Launch interactive Streamlit dashboard
+    ehdslens api             Start REST API server
 """
 
 import argparse
@@ -32,7 +34,7 @@ def main():
     parser.add_argument(
         '-v', '--version',
         action='version',
-        version='%(prog)s 1.0.0'
+        version='%(prog)s 1.1.0'
     )
 
     subparsers = parser.add_subparsers(dest='command', help='Available commands')
@@ -81,6 +83,16 @@ def main():
     # PRISMA command
     prisma_parser = subparsers.add_parser('prisma', help='Show PRISMA flow statistics')
 
+    # Dashboard command
+    dashboard_parser = subparsers.add_parser('dashboard', help='Launch interactive Streamlit dashboard')
+    dashboard_parser.add_argument('--port', type=int, default=8501, help='Port number (default: 8501)')
+
+    # API command
+    api_parser = subparsers.add_parser('api', help='Start REST API server')
+    api_parser.add_argument('--host', default='0.0.0.0', help='Host address (default: 0.0.0.0)')
+    api_parser.add_argument('--port', type=int, default=8000, help='Port number (default: 8000)')
+    api_parser.add_argument('--reload', action='store_true', help='Enable auto-reload for development')
+
     args = parser.parse_args()
 
     if args.command is None:
@@ -108,6 +120,10 @@ def main():
         cmd_hypotheses(analyzer)
     elif args.command == 'prisma':
         cmd_prisma(analyzer)
+    elif args.command == 'dashboard':
+        cmd_dashboard(args)
+    elif args.command == 'api':
+        cmd_api(args)
 
 
 def cmd_stats(analyzer: EHDSAnalyzer, args):
@@ -300,6 +316,46 @@ def cmd_prisma(analyzer: EHDSAnalyzer):
     print(f"  Studies in synthesis: {stats['studies_included']}")
 
     print("\n" + "=" * 60)
+
+
+def cmd_dashboard(args):
+    """Handle dashboard command."""
+    try:
+        import streamlit.web.cli as stcli
+        import sys
+        import os
+
+        # Get the dashboard module path
+        dashboard_path = os.path.join(os.path.dirname(__file__), 'dashboard.py')
+
+        print(f"\n🚀 Launching EHDSLens Dashboard on port {args.port}...")
+        print(f"   Open http://localhost:{args.port} in your browser\n")
+
+        sys.argv = ['streamlit', 'run', dashboard_path, '--server.port', str(args.port)]
+        stcli.main()
+
+    except ImportError:
+        print("Error: Streamlit is not installed.")
+        print("Install it with: pip install ehdslens[dashboard]")
+        sys.exit(1)
+
+
+def cmd_api(args):
+    """Handle API command."""
+    try:
+        from .api import run_api
+
+        print(f"\n🚀 Starting EHDSLens API Server...")
+        print(f"   API: http://{args.host}:{args.port}")
+        print(f"   Docs: http://{args.host}:{args.port}/docs")
+        print(f"   ReDoc: http://{args.host}:{args.port}/redoc\n")
+
+        run_api(host=args.host, port=args.port, reload=args.reload)
+
+    except ImportError:
+        print("Error: FastAPI/Uvicorn is not installed.")
+        print("Install it with: pip install ehdslens[api]")
+        sys.exit(1)
 
 
 if __name__ == '__main__':

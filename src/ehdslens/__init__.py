@@ -13,7 +13,7 @@ Institution: Universitas Mercatorum, Rome, Italy
 License: MIT
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __author__ = "Fabio Liberti"
 __email__ = "fabio.liberti@unimercatorum.it"
 

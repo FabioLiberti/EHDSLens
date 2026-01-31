@@ -49,16 +49,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 12 testable hypotheses for future research
 - 6 identified research gaps
 
+## [1.1.0] - 2026-01-31
+
+### Added
+
+- **Interactive Dashboard** (`ehdslens dashboard`):
+  - Streamlit-based web application
+  - Real-time filtering by year, axis, and quality
+  - Interactive Plotly charts and visualizations
+  - Study browser with search functionality
+  - GRADE-CERQual findings explorer
+  - Export to CSV functionality
+
+- **REST API** (`ehdslens api`):
+  - FastAPI-based REST API server
+  - Full OpenAPI documentation at `/docs`
+  - ReDoc documentation at `/redoc`
+  - Endpoints for all analysis features:
+    - `GET /statistics` - Database statistics
+    - `GET /studies` - List/filter studies
+    - `GET /studies/{id}` - Get study by ID
+    - `GET /search` - Search studies
+    - `GET /analysis/axes/{axis}` - Thematic analysis
+    - `GET /grade-cerqual` - GRADE-CERQual findings
+    - `GET /research-gaps` - Research gaps
+    - `GET /hypotheses` - Testable hypotheses
+    - `GET /prisma` - PRISMA diagram data
+    - `GET /export/bibliography` - Export bibliography
+
+- New optional dependencies:
+  - `ehdslens[dashboard]` - Streamlit dashboard
+  - `ehdslens[api]` - FastAPI REST API
+
+- New CLI commands:
+  - `ehdslens dashboard` - Launch interactive dashboard
+  - `ehdslens api` - Start REST API server
+
+### Changed
+
+- Updated version to 1.1.0
+- Enhanced CLI with dashboard and API commands
+
 ## [Unreleased]
 
 ### Planned
 
-- Interactive web dashboard
 - Integration with reference managers (Zotero, Mendeley)
 - Automatic literature update checking
 - Machine learning-based study classification
 - Multi-language support
+- Docker containerization
 
 ---
 
+[1.1.0]: https://github.com/FabioLiberti/EHDSLens/releases/tag/v1.1.0
 [1.0.0]: https://github.com/FabioLiberti/EHDSLens/releases/tag/v1.0.0
