@@ -143,8 +143,7 @@ def create_dashboard():
 
         with col1:
             st.subheader("📅 Publications by Year")
-            # year_counts = Counter(s.year for s in filtered_studies)
-            year_counts = Counter(s.year for s in filtered_studies if 2016 <= s.year <= 2026)
+            year_counts = Counter(s.year for s in filtered_studies)
             df_years = pd.DataFrame({
                 'Year': list(year_counts.keys()),
                 'Studies': list(year_counts.values())
